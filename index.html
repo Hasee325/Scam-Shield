@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScamGuard | Stay Safe Online</title>
+    <meta name="description" content="A premium scam site detection tool to keep you safe from phishing and malicious websites.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <header class="header">
+        <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">
+            <span class="logo-icon">🛡️</span>
+            <h1>Scam Shield</h1>
+        </a>
+        <nav>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="features.html" class="nav-link">Features</a>
+            <a href="api.html" class="nav-link">API</a>
+            <a href="signin.html" class="btn btn-outline">Sign In</a>
+        </nav>
+
+      
+    </header>
+
+    <main class="main-content">
+        <section class="hero" id="hero-section">
+            <h2 class="hero-title">Stay Safe.<br><span class="highlight">Spot Scams in Seconds.</span></h2>
+            <p class="hero-subtitle">Instantly analyze any URL for phishing, malware, and fraudulent activity using our advanced detection engine.</p>
+            
+            <form class="scan-form" id="scan-form">
+                <div class="input-group">
+                    <input type="text" id="url-input" placeholder="https://example.com" required autocomplete="off">
+                    <button type="submit" class="btn btn-primary" id="scan-btn">
+                        <span>Analyze URL</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    </button>
+                </div>
+                <div class="error-message" id="error-message">Please enter a valid URL.</div>
+            </form>
+        </section>
+
+        <section class="scanning-state hidden" id="scanning-section">
+            <div class="glass-card scanner-card">
+                <div class="scanner-header">
+                    <h3>Analyzing Target</h3>
+                    <span class="target-url" id="scanning-url">https://example.com</span>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span id="scan-status" class="status-text">Initializing scan engine...</span>
+                        <span id="scan-percentage" class="percentage">0%</span>
+                    </div>
+                </div>
+
+                <ul class="scan-steps" id="scan-steps">
+                    <li class="step pending">Resolving domain...</li>
+                    <li class="step pending">Checking SSL certificate...</li>
+                    <li class="step pending">Querying global blacklists...</li>
+                    <li class="step pending">Analyzing page content...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="results-state hidden" id="results-section">
+            <div class="results-header">
+                <h2 id="result-title">Analysis Complete</h2>
+                <button class="btn btn-outline btn-sm" id="new-scan-btn">Scan Another URL</button>
+            </div>
+            
+            <div class="glass-card result-summary" id="result-summary-card">
+                <div class="score-circle">
+                    <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path class="circle-bg"
+                        d="M18 2.0845
+                            a 15.9155 15.9155 0 0 1 0 31.831
+                            a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <path class="circle" id="score-circle-path"
+                        stroke-dasharray="0, 100"
+                        d="M18 2.0845
+                            a 15.9155 15.9155 0 0 1 0 31.831
+                            a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <text x="18" y="20.35" class="percentage-score" id="risk-score">0</text>
+                    </svg>
+                </div>
+                <div class="summary-details">
+                    <h3 id="safety-status" class="status-safe">Safe to Browse</h3>
+                    <p id="safety-description">Our analysis did not detect any significant threats or malicious activity associated with this URL.</p>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="glass-card metric-card">
+                    <div class="metric-icon">🔒</div>
+                    <div class="metric-info">
+                        <h4>SSL Certificate</h4>
+                        <p id="ssl-status">Valid (Let's Encrypt)</p>
+                    </div>
+                </div>
+                <div class="glass-card metric-card">
+                    <div class="metric-icon">📅</div>
+                    <div class="metric-info">
+                        <h4>Domain Age</h4>
+                        <p id="domain-age">5 years, 2 months</p>
+                    </div>
+                </div>
+                <div class="glass-card metric-card">
+                    <div class="metric-icon">🚨</div>
+                    <div class="metric-info">
+                        <h4>Blacklist Status</h4>
+                        <p id="blacklist-status">Not Listed</p>
+                    </div>
+                </div>
+                <div class="glass-card metric-card">
+                    <div class="metric-icon">🎣</div>
+                    <div class="metric-info">
+                        <h4>Phishing Risk</h4>
+                        <p id="phishing-risk">Low</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
